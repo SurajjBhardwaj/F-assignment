@@ -6,6 +6,7 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  darkMode: "class",
   theme: {
     extend: {
       backgroundImage: {
@@ -17,12 +18,12 @@ const config: Config = {
         "theme-dark": "#000000",
         "theme-white": "#FFFFFF",
         "black-new": "#25262B",
-        "header": "#25262B",
+        header: "#25262B",
         "footer-new": "#5C5F66",
         "footer-color": "#121212",
         "body-font": "#CCCCCC",
         "body-bg": "#121214",
-        "body-border": "#343A40"
+        "body-border": "#343A40",
       },
     },
   },
