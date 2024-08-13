@@ -21,7 +21,7 @@ const SideBar: React.FC<SideBarProps> = ({ onMenuItemClick }) => {
   };
 
   return (
-    <div className="dark:bg-dark-sidebar bg-white overflow-hidden no-scrollbar h-screen w-14 flex flex-col justify-between items-center py-6 border-r-2 dark:border-[#343A40] border-[#E0E0E0] left-0 top-0 fixed z-10">
+    <div className="dark:bg-dark-sidebar bg-white overflow-hidden h-screen w-14 flex flex-col justify-between items-center py-6 border-r-2 dark:border-[#343A40] border-[#E0E0E0] left-0 top-0 fixed z-10">
       <div className="rounded-xl">
         <Image
           src="/logo.svg" // Ensure `logo` is correctly imported

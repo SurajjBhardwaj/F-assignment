@@ -5,6 +5,7 @@ import NavbarTop from "../component/NavbarTop";
 import NavbarSide from "../component/NavbarSide";
 import { useState } from "react";
 import CommonView from "../component/CommonView";
+import Mail from "../component/Mail";
 
 const OneBox = () => {
   const [selectedComponent, setSelectedComponent] = useState(null);
@@ -13,11 +14,38 @@ const OneBox = () => {
     setSelectedComponent(path);
   };
 
+  if (selectedComponent === null) {
+    return (
+      <div id="root" className="h-screen w-screen dark:bg-black bg-white pl-14">
+        <NavbarSide onMenuItemClick={handleMenuItemClick} />
+        <NavbarTop />
+        <CommonView />
+      </div>
+    );
+  }
+
   return (
     <div id="root" className="h-screen w-screen dark:bg-black bg-white pl-14">
       <NavbarTop />
       <NavbarSide onMenuItemClick={handleMenuItemClick} />
-      <CommonView />
+      {/* <CommonView /> */}
+
+
+
+       <div className="h-screen w-screen dark:bg-black bg-white pl-14">
+      <NavbarSide onMenuItemClick={handleMenuItemClick} />
+      <NavbarTop />
+      <div>
+        {/* Render the selected component */}
+        {selectedComponent === "/" && <CommonView />}
+        {selectedComponent === "/search" && <CommonView />}
+        {selectedComponent === "/mail" && <CommonView />}
+        {selectedComponent === "/send" && <CommonView />}
+        {selectedComponent === "/stack" && <CommonView />}
+        {selectedComponent === "/inbox" && <Mail />}
+        {selectedComponent === "/stacks" && <CommonView />}
+      </div>
+      </div>
     </div>
   );
 };
