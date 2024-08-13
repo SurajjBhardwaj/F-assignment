@@ -24,6 +24,8 @@ const config: Config = {
         "body-font": "#CCCCCC",
         "body-bg": "#121214",
         "body-border": "#343A40",
+        "dark-sidebar": "#101113",
+        "sidebar2": "#AEAEAE",
       },
     },
   },
