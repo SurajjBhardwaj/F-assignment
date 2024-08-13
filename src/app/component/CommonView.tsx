@@ -2,11 +2,10 @@
 
 import { useContext, useEffect } from "react";
 import Image from "next/image";
-import { tokenContext } from "@/context/TokenContextProvider";
 
 function CommonView() {
-  const { token } = useContext(tokenContext) || {};
 
+  const token = localStorage.getItem("authToken");  
   useEffect(() => {
     async function call() {
       if (token) {
@@ -15,7 +14,8 @@ function CommonView() {
           {
             method: "GET",
             headers: {
-              Authorization: token,
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
             },
           }
         );
@@ -29,7 +29,7 @@ function CommonView() {
   }, [token]);
 
   return (
-    <div className=" dark:text-white text-[#5B5F66] bg-[#ECEFF3] dark:bg-black flex justify-center items-center w-auto h-screen flex-col">
+    <div className="dark:text-white text-[#5B5F66] bg-[#ECEFF3] dark:bg-black flex justify-center items-center w-[100%] h-screen flex-col">
       <div>
         <Image src="/main.svg" alt="Illustration" width={100} height={100} />
       </div>

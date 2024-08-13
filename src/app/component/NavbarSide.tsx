@@ -21,14 +21,14 @@ const SideBar: React.FC<SideBarProps> = ({ onMenuItemClick }) => {
   };
 
   return (
-    <div className="dark:bg-dark-sidebar bg-white overflow-hidden h-screen w-14 flex flex-col justify-between items-center py-6 border-r-2 dark:border-[#343A40] border-[#E0E0E0] left-0 top-0 fixed z-10">
+    <div className="dark:bg-dark-sidebar bg-white h-screen w-14 flex flex-col justify-between items-center py-6 border-r-2 dark:border-[#343A40] border-[#E0E0E0] left-0 top-0 fixed">
       <div className="rounded-xl">
         <Image
           src="/logo.svg" // Ensure `logo` is correctly imported
           alt="Logo"
           width={100}
           height={100}
-          className="h-8 rounded-xl object-left overflow-visible"
+          className="h-8 rounded-xl object-left"
         />
       </div>
       <div className="text-sidebar2 text-2xl space-y-10">
@@ -89,7 +89,7 @@ const SideBar: React.FC<SideBarProps> = ({ onMenuItemClick }) => {
           <IoStatsChartSharp />
         </div>
       </div>
-      <div className="text-white bg-green-500 p-2 rounded-full">PS</div>
+      <div className="text-white bg-green-500 p-1 rounded-full">SP</div>
     </div>
   );
 };

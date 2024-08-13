@@ -33,6 +33,13 @@ const config: Config = {
         "text-light": "#637381",
         "text-dark": "#B9B9B9",
         "icon-yellow": "#FFD700", // For the yellow color used in icons
+        "primaryDark": "#141517",
+        "borderGray": "#41464B",
+        "bgGray": "#23272C",
+        "gradientStart": "#4B63DD",
+        "gradientEnd": "#0524BF",
+        "textGray": "#BAB9BD",
+        "actionGray": "#ADADAD",
       },
     },
   },

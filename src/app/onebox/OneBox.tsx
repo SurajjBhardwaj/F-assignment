@@ -22,19 +22,14 @@ const OneBox = () => {
         <CommonView />
       </div>
     );
-  }
+  }else {
 
   return (
     <div id="root" className="h-screen w-screen dark:bg-black bg-white pl-14">
-      <NavbarTop />
-      <NavbarSide onMenuItemClick={handleMenuItemClick} />
       {/* <CommonView /> */}
-
-
-
-       <div className="h-screen w-screen dark:bg-black bg-white pl-14">
-      <NavbarSide onMenuItemClick={handleMenuItemClick} />
+\      <NavbarSide onMenuItemClick={handleMenuItemClick} />
       <NavbarTop />
+
       <div>
         {/* Render the selected component */}
         {selectedComponent === "/" && <CommonView />}
@@ -45,9 +40,10 @@ const OneBox = () => {
         {selectedComponent === "/inbox" && <Mail />}
         {selectedComponent === "/stacks" && <CommonView />}
       </div>
-      </div>
     </div>
   );
+
+}
 };
 
 export default OneBox;
