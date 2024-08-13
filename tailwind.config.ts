@@ -20,6 +20,9 @@ const config: Config = {
         "header": "#25262B",
         "footer-new": "#5C5F66",
         "footer-color": "#121212",
+        "body-font": "#CCCCCC",
+        "body-bg": "#121214",
+        "body-border": "#343A40"
       },
     },
   },
