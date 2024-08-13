@@ -23,7 +23,8 @@ export default function Home() {
     const tokenFromUrl = urlParams.get("token");
 
     if (tokenFromUrl) {
-      localStorage.setItem("authToken", tokenFromUrl);
+            localStorage.setItem("authToken", `Bearer ${token}`);
+
       setToken(tokenFromUrl);
     }
 
@@ -46,7 +47,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center h-screen w-screen">
+    <div className="flex flex-col justify-center items-center hCommonV-screen w-screen">
       {/* Header */}
       <div className="flex items-center justify-center w-full border-b border-header h-[5.3%]">
         <Image
