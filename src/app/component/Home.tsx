@@ -47,7 +47,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center hCommonV-screen w-screen">
+    <div className="flex flex-col justify-center items-center h-screen w-screen">
       {/* Header */}
       <div className="flex items-center justify-center w-full border-b border-header h-[5.3%]">
         <Image
