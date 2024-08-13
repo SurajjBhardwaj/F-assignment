@@ -1,6 +1,13 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { Open_Sans } from "next/font/google";
+
+//👇 Configure our font object
+const openSans = Open_Sans({
+  subsets: ["latin"],
+  display: "swap",
+});
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,8 +22,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" className={openSans.className}>
+      <body className={openSans.className}>{children}</body>
     </html>
   );
 }
