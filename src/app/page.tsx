@@ -1,7 +1,22 @@
+"use client"
+
 import Image from "next/image";
 import SignUp from "./component/SignUp";
+import { signIn } from "next-auth/react";
+
 
 export default function Home() {
+
+
+  const handleSignIn = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    console.log("Sign in with Google...");
+    signIn("google").catch((error) => {
+      console.error("Error signing in:", error);
+      // You can also handle the error by showing an alert or setting an error state
+    });
+  };
+
   return (
     <div className="flex flex-col justify-center items-center h-screen w-screen">
       {/* Header */}
@@ -23,7 +38,10 @@ export default function Home() {
               Create a new account
             </h1>
 
-            <div className="flex max-[190]:flex-col w-[110%] min-[300]:w-[150%] xs:w-[100%] sm:w-[150%]  md:w-[380px] h-[48px] justify-center items-center text-2xl border border-footer-new rounded-md">
+            <div
+              className="flex max-[190]:flex-col w-[110%] min-[300]:w-[150%] xs:w-[100%] sm:w-[150%]  md:w-[380px] h-[48px] justify-center items-center text-2xl border border-footer-new rounded-md"
+              onClick={handleSignIn}
+            >
               <Image
                 src="/google_g_icon.svg"
                 width={35}
