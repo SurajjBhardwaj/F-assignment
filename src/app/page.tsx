@@ -3,9 +3,21 @@
 import Image from "next/image";
 import SignUp from "./component/SignUp";
 import { signIn } from "next-auth/react";
+import { getServerSession } from 'next-auth';
+import { authConfig } from "@/lib/Auth";
 
 
 export default function Home() {
+
+  let session;
+
+  const sessionDeatils = async () => {
+    session = await getServerSession(authConfig);
+    console.log(session);
+  }
+
+  sessionDeatils();
+
 
 
   const handleSignIn = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -19,6 +31,9 @@ export default function Home() {
 
   return (
     <div className="flex flex-col justify-center items-center h-screen w-screen">
+
+      
+
       {/* Header */}
       <div className="flex items-center justify-center w-full border-b border-header h-[5.3%]">
         <Image

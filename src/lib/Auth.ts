@@ -1,4 +1,5 @@
 
+
 import GoogleProvider from "next-auth/providers/google";
 import { NextAuthOptions, User, getServerSession } from "next-auth";
 import { useSession } from "next-auth/react";
@@ -16,15 +17,5 @@ export const authConfig: NextAuthOptions = {
 export async function loginIsRequiredServer() {
   const session = await getServerSession(authConfig);
   if (!session) return redirect("/");
-}
-
-
-"use client";
-
-export function loginIsRequiredClient() {
-  if (typeof window !== "undefined") {
-    const session = useSession();
-    const router = useRouter();
-    if (!session) router.push("/");
-  }
+  else return session;
 }

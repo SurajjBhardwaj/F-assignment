@@ -7,6 +7,9 @@ const nextConfig = {
     config.resolve.extensions.push(".ts", ".tsx");
     return config;
   },
+  images: {
+    domains: ["images.unsplash.com", "lh3.googleusercontent.com"],
+  },
 };
 
 export default nextConfig;
