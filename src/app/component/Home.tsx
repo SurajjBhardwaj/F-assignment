@@ -4,6 +4,7 @@ import { tokenContext } from "@/context/TokenContextProvider";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useContext } from "react";
+import { getURL } from "./functions";
 
 export default function Home() {
   const router = useRouter();
@@ -12,6 +13,8 @@ export default function Home() {
   if (!context) {
     throw new Error("tokenContext must be used within a TokenContextProvider");
   }
+
+
 
   const { token, setToken } = context;
 
@@ -34,8 +37,11 @@ export default function Home() {
     e.preventDefault();
     console.log("Sign in with Google...");
 
+    const URL = getURL();
+    console.log(URL);
+
     router.push(
-      "https://hiring.reachinbox.xyz/api/v1/auth/google-login?redirect_to=http://localhost:3000"
+      `https://hiring.reachinbox.xyz/api/v1/auth/google-login?redirect_to=${URL}`
     );
   };
 
