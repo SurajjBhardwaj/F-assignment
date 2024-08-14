@@ -20,7 +20,7 @@ function DeletePopUp({ onCancel, onDelete }: Props) {
           </button>
           <button
             onClick={onDelete}
-            className="bg-gradient-to-r from-footer-new to-footer-color text-theme-white px-16 py-4 rounded-md focus:outline-none"
+            className="bg-gradient-to-r from-deleteButtn to-deleteButtn2 text-theme-white px-16 py-4 rounded-md focus:outline-none"
           >
             Delete
           </button>

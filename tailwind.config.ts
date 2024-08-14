@@ -40,6 +40,8 @@ const config: Config = {
         "gradientEnd": "#0524BF",
         "textGray": "#BAB9BD",
         "actionGray": "#ADADAD",
+        "deleteButtn": "#FA5252",
+        "deleteButtn2": "#A91919",
       },
     },
   },
