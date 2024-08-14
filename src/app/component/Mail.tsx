@@ -4,12 +4,15 @@ import { useEffect, useState } from "react";
 import AllInbox from "./Inbox";
 import CenterPage from "./CenterPage";
 import RightSection from "./Right";
+import { useToast } from "./reuse/Toast";
+
 
 function Mail() {
   const [datas, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedThread, setSelectedThread] = useState<number | null>(null);
   const [token, setToken] = useState<string | null>(null);
+  const { toast } = useToast(); 
 
   useEffect(() => {
     if (token) {
@@ -37,16 +40,29 @@ function Mail() {
             },
           }
         );
+        const data = await response.json();
 
         if (response.ok) {
-          const data = await response.json();
           setData(data.data);
           setLoading(false);
+          toast({title: "Data Fetched Successfully", action: "✅"});
         } else {
           console.error("Failed to fetch data.");
+                 toast({
+                   title: "Error",
+                   action: "❌",
+                   description: data?.message || " ",
+                 });
+
         }
       } catch (error) {
         console.error("Error fetching data:", error);
+        
+  toast({
+    title: "Error",
+    action: "❌",
+    description: error instanceof Error ? error.message : "Unknown error",
+  });
       }
     };
 
