@@ -4,10 +4,10 @@ import { useEffect, useState } from "react";
 import { FaSun, FaMoon } from "react-icons/fa";
 
 function ThemeToggle() {
-  // Initialize darkMode state based on localStorage or system preference
+  // Initialize darkMode state based on window.localStorage or system preference
   const [darkMode, setDarkMode] = useState(() => {
     if (typeof window !== "undefined") {
-      const savedMode = localStorage.getItem("theme");
+      const savedMode = window.localStorage.getItem("theme");
       return savedMode
         ? JSON.parse(savedMode)
         : window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -25,8 +25,8 @@ function ThemeToggle() {
       root.classList.remove("dark");
     }
 
-    // Save the user's preference in localStorage
-    localStorage.setItem("theme", JSON.stringify(darkMode));
+    // Save the user's preference in window.localStorage
+    window.localStorage.setItem("theme", JSON.stringify(darkMode));
   }, [darkMode]);
 
   return (

@@ -1,11 +1,15 @@
 "use client";
 
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import Image from "next/image";
 
 function CommonView() {
+ const [token, setToken] = useState<string | null>(null);
 
-  const token = localStorage.getItem("authToken");  
+ useEffect(() => {
+   setToken(window.localStorage.getItem("authToken"));
+ }, []);
+
   useEffect(() => {
     async function call() {
       if (token) {

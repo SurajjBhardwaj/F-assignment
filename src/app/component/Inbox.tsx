@@ -1,4 +1,6 @@
-import { useContext } from "react";
+"use client";
+
+import { useContext, useEffect, useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import { FaAngleDown } from "react-icons/fa";
 import { GoDotFill } from "react-icons/go";
@@ -14,7 +16,12 @@ function AllInbox({
   loadMail: (threadId: number) => void;
 }) {
 
-  const token = localStorage.getItem("authToken");
+  const [token, setToken] = useState<string | null>(null);
+
+  useEffect(() => {
+    setToken(window.localStorage.getItem("authToken"));
+  }, []);
+
   async function reloadHandler() {
     try {
       const response = await fetch(

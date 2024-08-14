@@ -1,3 +1,5 @@
+"use client"
+
 import { useEffect, useState, useContext } from "react";
 import AllInbox from "./Inbox";
 import CenterPage from "./CenterPage";
@@ -11,16 +13,12 @@ function Mail() {
   const [selectedThread, setSelectedThread] = useState<number | null>(null);
 
 
-  // // Ensure the context is available
-  // if (!context) {
-  //   throw new Error("tokenContext must be used within a TokenContextProvider");
-  // }
+  const [token, setToken] = useState<string | null>(null);
 
+  useEffect(() => {
+    setToken(window.localStorage.getItem("authToken"));
+  }, []);
 
-    
-
-
-  const token = localStorage.getItem("authToken");
 
   useEffect(() => {
     const fetchMails = async () => {

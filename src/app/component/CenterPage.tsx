@@ -1,10 +1,12 @@
+"use client"
+
+
 import React, { useEffect, useState, useContext } from "react";
 import CustomMail from "./CustomMail";
 import { MdOutlineExpand } from "react-icons/md";
 import { FaReply } from "react-icons/fa";
 import { SlArrowDown } from "react-icons/sl";
 import { GoDotFill } from "react-icons/go";
-import { tokenContext } from "@/context/TokenContextProvider";
 import DeletePopUp from "./Delete";
 
 interface MailData {
@@ -26,8 +28,11 @@ const CenterPage: React.FC<Props> = ({ selectedThread }) => {
   const [showPopUp, setShowPopUp] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
   const [selectedMail, setSelectedMail] = useState<MailData[]>([]);
+   const [token, setToken] = useState<string | null>(null);
 
-  const token = localStorage.getItem("authToken");
+   useEffect(() => {
+     setToken(window.localStorage.getItem("authToken"));
+   }, []);
 
   const togglePopUp = () => {
     setShowPopUp(!showPopUp);
