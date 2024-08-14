@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import NavbarTop from "../component/NavbarTop";
 import NavbarSide from "../component/NavbarSide";
 import { useState } from "react";
@@ -9,6 +9,14 @@ import Mail from "../component/Mail";
 
 const OneBox = () => {
   const [selectedComponent, setSelectedComponent] = useState(null);
+
+  useEffect(() => {
+    const token = window.localStorage.getItem("authToken");
+    if (!token) {
+      window.location.href = "/";
+    }
+  }, []);
+
 
   const handleMenuItemClick = (path: any) => {
     setSelectedComponent(path);

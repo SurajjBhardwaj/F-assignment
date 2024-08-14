@@ -23,6 +23,7 @@ export default function Home() {
     const tokenFromUrl = urlParams.get("token");
 
     if (tokenFromUrl) {
+
             localStorage.setItem("authToken", `${token}`);
 
       setToken(tokenFromUrl);
