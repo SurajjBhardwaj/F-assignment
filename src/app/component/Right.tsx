@@ -62,7 +62,7 @@ const RightSection: React.FC = () => {
           <div className="flex my-4 items-center">
             <div>
               <Image
-                src="/assets/mail.svg"
+                src="/mail.svg"
                 alt="Mail"
                 width={48}
                 height={48}
@@ -80,7 +80,7 @@ const RightSection: React.FC = () => {
           <div className="flex my-4 items-center">
             <div>
               <Image
-                src="/assets/mail.svg"
+                src="/mail.svg"
                 alt="Mail"
                 width={48}
                 height={48}

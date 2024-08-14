@@ -74,7 +74,7 @@ function Mail() {
   };
 
   return (
-    <div className="bg-gray-200 dark:bg-black text-white pt-8  overflow-hidden flex w-full h-screen">
+    <div className="bg-gray-200 dark:bg-black text-white pt-16   overflow-hidden flex w-full h-screen">
       <div className="w-1/4">
         <AllInbox data={datas} loadMail={loadMail} />
       </div>

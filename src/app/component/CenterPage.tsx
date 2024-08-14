@@ -1,12 +1,11 @@
-"use client"
+"use client";
 
-
-import React, { useEffect, useState, useContext } from "react";
-import CustomMail from "./CustomMail";
-import { MdOutlineExpand } from "react-icons/md";
+import React, { useEffect, useState } from "react";
 import { FaReply } from "react-icons/fa";
-import { SlArrowDown } from "react-icons/sl";
 import { GoDotFill } from "react-icons/go";
+import { MdOutlineExpand } from "react-icons/md";
+import { SlArrowDown } from "react-icons/sl";
+import CustomMail from "./CustomMail";
 import DeletePopUp from "./Delete";
 
 interface MailData {
@@ -28,11 +27,11 @@ const CenterPage: React.FC<Props> = ({ selectedThread }) => {
   const [showPopUp, setShowPopUp] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
   const [selectedMail, setSelectedMail] = useState<MailData[]>([]);
-   const [token, setToken] = useState<string | null>(null);
+  const [token, setToken] = useState<string | null>(null);
 
-   useEffect(() => {
-     setToken(window.localStorage.getItem("authToken"));
-   }, []);
+  useEffect(() => {
+    setToken(window.localStorage.getItem("authToken"));
+  }, []);
 
   const togglePopUp = () => {
     setShowPopUp(!showPopUp);
@@ -56,8 +55,17 @@ const CenterPage: React.FC<Props> = ({ selectedThread }) => {
     }
   };
 
+  // Helper function to check if an input or textarea is focused
+  const isInputFocused = () =>
+    document.activeElement?.tagName === "INPUT" ||
+    document.activeElement?.tagName === "TEXTAREA";
+
   useEffect(() => {
     const handleKeyPress = (event: KeyboardEvent) => {
+      if (isInputFocused() || event.ctrlKey || event.altKey || event.metaKey) {
+        return;
+      }
+
       if (event.key === "d" || event.key === "D") {
         setShowDelete(!showDelete);
         console.log("Pressed D");

@@ -1,6 +1,5 @@
 "use client";
 
-
 import { useState, useContext } from "react";
 import { BsLightningChargeFill } from "react-icons/bs";
 import {
@@ -22,7 +21,6 @@ function CustomMail({ threadId, onClose }: any) {
     subject: "",
     body: "",
   });
-
 
   const token = localStorage.getItem("authToken");
   const handleSendReply = async () => {
@@ -73,17 +71,19 @@ function CustomMail({ threadId, onClose }: any) {
 
   return (
     <div className="bg-gray-400/25 fixed top-0 left-0 flex justify-center items-center h-full w-full z-20">
-      <div className="bg-primaryDark w-1/2 h-4/5 rounded-lg border border-borderGray">
-        <div className="flex justify-between items-center px-4 bg-bgGray rounded-t-lg py-2 border-b border-borderGray">
-          <div className="pl-4 text-sm">Reply</div>
+      <div className="bg-primaryDark dark:bg-dark-primaryDark w-1/2 h-4/5 rounded-lg border border-borderGray dark:border-dark-borderGray">
+        <div className="flex justify-between items-center px-4 bg-bgGray dark:bg-dark-bgGray rounded-t-lg py-2 border-b border-borderGray dark:border-dark-borderGray">
+          <div className="pl-4 text-sm text-textGray dark:text-dark-textGray">
+            Reply
+          </div>
           <div onClick={onClose}>
             <RxCross2 className="text-xl cursor-pointer" />
           </div>
         </div>
-        <div className="flex text-sm py-2 border-b border-borderGray pl-8">
-          <div className="text-textGray">To :</div>
+        <div className="flex text-sm py-2 border-b border-borderGray dark:border-dark-borderGray pl-8">
+          <div className="text-textGray dark:text-dark-textGray">To :</div>
           <input
-            className="bg-transparent ml-4"
+            className="bg-transparent block w-[80%] focus:outline-none ml-4 text-inputGray dark:text-dark-inputGray"
             placeholder="Recipient's Email"
             name="to"
             value={replyData.to}
@@ -91,10 +91,10 @@ function CustomMail({ threadId, onClose }: any) {
           />
         </div>
 
-        <div className="flex text-sm py-2 border-b border-borderGray pl-8">
-          <div className="text-textGray">From :</div>
+        <div className="flex text-sm py-2 border-b border-borderGray dark:border-dark-borderGray pl-8">
+          <div className="text-textGray dark:text-dark-textGray">From :</div>
           <input
-            className="bg-transparent ml-4"
+            className="bg-transparent block w-[80%] focus:outline-none ml-4 text-inputGray dark:text-dark-inputGray"
             placeholder="Your Email"
             name="from"
             value={replyData.from}
@@ -102,10 +102,10 @@ function CustomMail({ threadId, onClose }: any) {
           />
         </div>
 
-        <div className="flex text-sm py-2 border-b border-borderGray pl-8">
-          <div className="text-textGray">Subject :</div>
+        <div className="flex text-sm py-2 border-b border-borderGray dark:border-dark-borderGray pl-8">
+          <div className="text-textGray dark:text-dark-textGray">Subject :</div>
           <input
-            className="bg-transparent ml-4"
+            className="bg-transparent block w-[80%] focus:outline-none ml-4 text-inputGray dark:text-dark-inputGray"
             placeholder="Subject"
             name="subject"
             value={replyData.subject}
@@ -113,9 +113,9 @@ function CustomMail({ threadId, onClose }: any) {
           />
         </div>
 
-        <div className="flex text-sm py-2 border-b border-borderGray px-4 pr-8 pt-8 h-2/3">
+        <div className="flex text-sm py-2 border-b border-borderGray dark:border-dark-borderGray px-4 pr-8 pt-8 h-2/3">
           <textarea
-            className="bg-transparent ml-4 w-full h-full"
+            className="bg-transparent ml-4 w-full h-full text-inputGray dark:text-dark-inputGray"
             placeholder="Message Body"
             name="body"
             value={replyData.body}
@@ -130,15 +130,15 @@ function CustomMail({ threadId, onClose }: any) {
           >
             Send <FaCaretDown className="ml-4" />
           </div>
-          <div className="flex items-center text-actionGray">
+          <div className="flex items-center text-actionGray dark:text-dark-actionGray">
             <BsLightningChargeFill className="mr-3" />
             Variables
           </div>
-          <div className="flex items-center text-actionGray">
+          <div className="flex items-center text-actionGray dark:text-dark-actionGray">
             <FaEye className="mr-3" />
             Preview Email
           </div>
-          <div className="flex space-x-3 text-xl text-actionGray">
+          <div className="flex space-x-3 text-xl text-actionGray dark:text-dark-actionGray">
             <div>
               <TbSquareLetterA />
             </div>
