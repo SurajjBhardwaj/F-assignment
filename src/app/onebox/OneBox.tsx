@@ -6,14 +6,21 @@ import NavbarSide from "../component/NavbarSide";
 import { useState } from "react";
 import CommonView from "../component/CommonView";
 import Mail from "../component/Mail";
+import { useToast } from "../component/reuse/Toast";
+
 
 const OneBox = () => {
   const [selectedComponent, setSelectedComponent] = useState(null);
+  const { toast } = useToast();
+
 
   useEffect(() => {
     const token = window.localStorage.getItem("authToken");
     if (!token) {
+       toast({ title: "You're not authorized here", action: "❌", description: "Redirecting to login page" });
       window.location.href = "/";
+    } else {
+      toast({ title: "Welcome to Onebox", action: "success" });
     }
   }, []);
 

@@ -13,6 +13,7 @@ import { IoMdCode } from "react-icons/io";
 import { IoLinkSharp } from "react-icons/io5";
 import { RxCross2 } from "react-icons/rx";
 import { TbSquareLetterA } from "react-icons/tb";
+import { useToast } from "./reuse/Toast";
 
 function CustomMail({ threadId, onClose }: any) {
   const [replyData, setReplyData] = useState({
@@ -22,9 +23,15 @@ function CustomMail({ threadId, onClose }: any) {
     body: "",
   });
 
+  const [isSending, setIsSending] = useState(false);
+  console.log(threadId);
+   const { toast } = useToast();
+
   const token = localStorage.getItem("authToken");
   const handleSendReply = async () => {
     try {
+      setIsSending(true);
+      console.log("Sending reply...", isSending);
       const response = await fetch(
         `https://hiring.reachinbox.xyz/api/v1/onebox/reply/${threadId}`,
         {
@@ -38,18 +45,32 @@ function CustomMail({ threadId, onClose }: any) {
             from: replyData.from,
             subject: replyData.subject,
             body: replyData.body,
+            references: [
+              "<dea5a0c2-336f-1dc3-4994-191a0ad3891a@gmail.com>",
+              "<CAN5Dvwu24av80BmEg9ZVDWaP2+hTOrBQn9KhjfFkZZX_Do88FA@mail.gmail.com>",
+              "<CAN5DvwuzPAhoBEpQGRUOFqZF5erXc=B98Ew_5zbHF5dmeKWZMQ@mail.gmail.com>",
+              "<a1383d57-fdee-60c0-d46f-6bc440409e84@gmail.com>",
+            ],
+            inReplyTo: "<a1383d57-fdee-60c0-d46f-6bc440409e84@gmail.com>",
           }),
         }
       );
+      const result = await response.json();
 
       if (response.ok) {
         console.log("Reply sent successfully");
+         toast({ title: "Reply sent successfully", action: "✅" });
         onClose();
       } else {
+      toast({ title: "Failed to send reply", action: "❌" });
         console.error("Failed to send reply");
       }
     } catch (error) {
+     toast({ title: "Error sending reply", action: "❌" });
       console.error("Error sending reply:", error);
+
+    } finally {
+      setIsSending(false);
     }
   };
 
@@ -68,6 +89,18 @@ function CustomMail({ threadId, onClose }: any) {
       [name]: value,
     }));
   };
+
+   const displayToast = (
+     title: string,
+     action: string,
+     description: string = ""
+   ) => {
+     toast({
+       title,
+       action,
+       description,
+     });
+   };
 
   return (
     <div className="bg-gray-400/25 fixed top-0 left-0 flex justify-center items-center h-full w-full z-20">
@@ -128,7 +161,7 @@ function CustomMail({ threadId, onClose }: any) {
             className="bg-gradient-to-r from-gradientStart to-gradientEnd px-5 py-2 rounded-md flex items-center cursor-pointer"
             onClick={handleSendReply}
           >
-            Send <FaCaretDown className="ml-4" />
+            {isSending ? "Sending..." : "Send"} <FaCaretDown className="ml-4" />
           </div>
           <div className="flex items-center text-actionGray dark:text-dark-actionGray">
             <BsLightningChargeFill className="mr-3" />

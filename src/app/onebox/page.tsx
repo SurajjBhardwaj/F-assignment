@@ -1,8 +1,11 @@
 import React, { useEffect } from 'react'
 import OneBox from './OneBox';
+import { ToastProvider } from '../component/reuse/Toast';
 
 const page = () => {
-  return <div><OneBox /></div>;
+  return      <ToastProvider>
+        <OneBox />
+    </ToastProvider>
 }
 
 export default page
