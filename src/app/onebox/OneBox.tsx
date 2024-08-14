@@ -16,34 +16,37 @@ const OneBox = () => {
 
   if (selectedComponent === null) {
     return (
-      <div id="root" className="h-screen w-screen dark:bg-black bg-white pl-14">
+      <div
+        id="root"
+        className="min-h-screen w-screen dark:bg-black bg-white pl-14"
+      >
         <NavbarSide onMenuItemClick={handleMenuItemClick} />
         <NavbarTop />
         <CommonView />
       </div>
     );
-  }else {
-
-  return (
-    <div id="root" className="h-screen w-screen dark:bg-black bg-white pl-14">
-      {/* <CommonView /> */}
-\      <NavbarSide onMenuItemClick={handleMenuItemClick} />
-      <NavbarTop />
-
-      <div>
-        {/* Render the selected component */}
-        {selectedComponent === "/" && <CommonView />}
-        {selectedComponent === "/search" && <CommonView />}
-        {selectedComponent === "/mail" && <CommonView />}
-        {selectedComponent === "/send" && <CommonView />}
-        {selectedComponent === "/stack" && <CommonView />}
-        {selectedComponent === "/inbox" && <Mail />}
-        {selectedComponent === "/stacks" && <CommonView />}
+  } else {
+    return (
+      <div
+        id="root"
+        className="min-h-screen w-screen dark:bg-black bg-white pl-14"
+      >
+        <NavbarSide onMenuItemClick={handleMenuItemClick} />
+        <NavbarTop />
+        <div>
+          {/* Render the selected component */}
+          {selectedComponent === "/" && <CommonView />}
+          {selectedComponent === "/search" && <CommonView />}
+          {selectedComponent === "/mail" && <CommonView />}
+          {selectedComponent === "/send" && <CommonView />}
+          {selectedComponent === "/stack" && <CommonView />}
+          {selectedComponent === "/inbox" && <Mail />}
+          {selectedComponent === "/stacks" && <CommonView />}
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 
-}
 };
 
 export default OneBox;
